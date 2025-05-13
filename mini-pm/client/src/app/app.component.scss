@@ -1,0 +1,43 @@
+@use 'sass:color';
+
+.main-toolbar {
+  background: linear-gradient(to right, #000000, #000000);
+  color: white;
+  height: 64px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+
+  .logo {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  // All toolbar buttons
+  .toolbar-btn {
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    background-color: #007c91;
+    border-radius: 8px;        // curved edges
+    color: #fff;
+    margin-left: 0.5rem;
+
+    &:hover {
+      background-color: color.adjust(#007c91, $lightness: -12%);
+    }
+  }
+
+  // Logout button overrides
+  .btn-logout {
+    background-color: #e53935;
+
+    &:hover {
+      background-color: color.adjust(#e53935, $lightness: -12%);
+    }
+  }
+}

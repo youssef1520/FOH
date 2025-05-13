@@ -1,0 +1,45 @@
+<div class="dashboard-container">
+  <h1 class="greeting">Hello, {{ auth.role | titlecase }}</h1>
+
+  <nav class="dashboard-nav">
+    <button
+      mat-raised-button
+      routerLink="/dashboard/projects"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      *ngIf="auth.role === 'admin'"
+    >
+      Projects
+    </button>
+
+    <button
+      mat-raised-button
+      routerLink="/dashboard/tasks"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Tasks
+    </button>
+
+    <button
+      mat-raised-button
+      routerLink="/dashboard/user"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      *ngIf="auth.role === 'admin'"
+    >
+      Users
+    </button>
+    
+    <button
+      mat-raised-button
+      routerLink="/dashboard/activity-log"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Activity Log
+    </button>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>

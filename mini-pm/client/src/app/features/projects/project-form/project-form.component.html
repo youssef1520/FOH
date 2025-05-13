@@ -1,0 +1,54 @@
+<div class="actions">
+  <button
+    mat-raised-button
+    class="btn-cancel"
+    *ngIf="id"
+    (click)="cancel()"
+  >
+    Cancel
+  </button>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="save()" class="project-form">
+  <h2 class="form-title">{{ id ? 'Edit Project' : 'New Project' }}</h2>
+
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Project Name</mat-label>
+    <input matInput formControlName="name" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description" rows="3"></textarea>
+  </mat-form-field>
+
+  <div class="row">
+    <mat-form-field appearance="outline" class="half">
+      <mat-label>Start Date</mat-label>
+      <input matInput type="date" formControlName="start_date" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="half">
+      <mat-label>End Date</mat-label>
+      <input matInput type="date" formControlName="end_date" />
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="outline" class="full status-field">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status" panelClass="full-width-dropdown">
+      <mat-option value="Planned">Planned</mat-option>
+      <mat-option value="In Progress">In Progress</mat-option>
+      <mat-option value="Completed">Completed</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="btns">
+    <button mat-raised-button type="submit" class="btn-save">
+      {{ id ? 'Update' : 'Save' }}
+    </button>
+    <button mat-raised-button class="btn-cancel" type="button" (click)="cancel()">
+      Cancel
+    </button>
+  </div>
+</form>

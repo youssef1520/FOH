@@ -1,0 +1,36 @@
+<mat-toolbar class="main-toolbar">
+  <span class="logo">FOH</span>
+  <span class="spacer"></span>
+
+  <!-- Show only on /login -->
+  <button
+    mat-button
+    routerLink="/"
+    *ngIf="!auth.isLoggedIn && isLoginRoute"
+    class="toolbar-btn"
+  >
+    Home
+  </button>
+
+  <!-- Show login only on routes other than /login -->
+  <button
+    mat-button
+    routerLink="/login"
+    *ngIf="!auth.isLoggedIn && !isLoginRoute"
+    class="toolbar-btn"
+  >
+    Login
+  </button>
+
+  <!-- Show logout if authenticated -->
+  <button
+    mat-button
+    (click)="auth.logout()"
+    *ngIf="auth.isLoggedIn"
+    class="toolbar-btn btn-logout"
+  >
+    Logout
+  </button>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,114 @@
+@use 'sass:color';
+
+.button {
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  transition: background-color 0.2s, transform 0.1s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.btn-save {
+  @extend .button;
+  background-color: #43a047;
+  color: #fff;
+
+  &:hover {
+    background-color: color.scale(#43a047, $lightness: -12%);
+  }
+}
+
+.btn-cancel {
+  @extend .button;
+  background-color: #e53935;
+  color: #fff;
+
+  &:hover {
+    background-color: color.scale(#e53935, $lightness: -12%);
+  }
+}
+
+.actions {
+  text-align: right;
+  margin: 1rem 0;
+}
+
+.project-form {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  padding: 2rem;
+  background: #fafafa;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+
+  .form-title {
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #00838f;
+  }
+
+  .full {
+    width: 100%;
+  }
+
+  .half {
+    width: 48%;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  ::ng-deep .mat-form-field .mat-input-element {
+    padding-left: 0.5rem !important;
+  }
+
+  ::ng-deep .full-width-dropdown {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  ::ng-deep .mat-form-field {
+    width: 100%;
+  }
+
+  input {
+    padding-left: 0.75rem;
+    box-sizing: border-box;
+
+  }
+
+  .btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-form {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .half {
+    width: 100%;
+  }
+}

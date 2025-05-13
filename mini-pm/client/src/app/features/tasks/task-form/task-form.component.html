@@ -1,0 +1,70 @@
+<form [formGroup]="form" (ngSubmit)="save()" class="task-form">
+  <h2>
+    {{ id 
+        ? (auth.role === 'admin' ? 'Edit Task' : 'Update Status') 
+        : 'New Task' }}
+  </h2>
+
+  <div class="field" *ngIf="auth.role === 'admin'">
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+  </div>
+
+  <div class="field" *ngIf="auth.role === 'admin'">
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" rows="3"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="field" *ngIf="auth.role === 'admin'">
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Project</mat-label>
+      <mat-select formControlName="project_id">
+        <mat-option *ngFor="let p of (projects | async)" [value]="p.id">
+          {{ p.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="field" *ngIf="auth.role === 'admin'">
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Assign To</mat-label>
+      <mat-select formControlName="assigned_user_id">
+        <mat-option *ngFor="let u of users" [value]="u.id">
+          {{ u.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="field">
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="To Do">To Do</mat-option>
+        <mat-option value="In Progress">In Progress</mat-option>
+        <mat-option value="Done">Done</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="field" *ngIf="auth.role === 'admin'">
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Due Date</mat-label>
+      <input matInput type="date" formControlName="due_date" />
+    </mat-form-field>
+  </div>
+
+  <div class="btns">
+    <button mat-raised-button type="submit" class="btn-save">
+      {{ id ? 'Update' : 'Save' }}
+    </button>
+    <button mat-raised-button class="btn-cancel" (click)="cancel()">
+      Cancel
+    </button>
+  </div>
+</form>

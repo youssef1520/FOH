@@ -1,0 +1,137 @@
+@use 'sass:color';
+
+.button {
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  transition: background-color 0.2s, transform 0.1s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+
+.btn-add {
+  @extend .button;
+  background-color: #00acc1;
+  color: #fff;
+
+  &:hover {
+    background-color: color.scale(#00acc1, $lightness: -12%);
+  }
+}
+
+.btn-save {
+  @extend .button;
+  background-color: #43a047;
+  color: #fff;
+
+  &:hover {
+    background-color: color.scale(#43a047, $lightness: -12%);
+  }
+}
+
+.btn-cancel {
+  @extend .button;
+  background-color: #e53935;
+  color: #fff;
+
+  &:hover {
+    background-color: color.scale(#e53935, $lightness: -12%);
+  }
+}
+
+
+.btn-delete {
+  @extend .button;
+  background-color: #e53935;
+  color: #fff;
+  padding: 0.5rem;
+
+  &:hover {
+    background-color: color.scale(#e53935, $lightness: -12%);
+  }
+}
+
+.actions {
+  margin: 2rem 0 1.5rem;
+  text-align: right;
+}
+
+
+.user-form {
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  padding: 2rem;
+  background: #fafafa;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+
+  .full {
+    width: 100%;
+  }
+
+  ::ng-deep .mat-form-field {
+    width: 100%;
+  }
+
+  ::ng-deep .mat-input-element,
+  ::ng-deep .mat-select-trigger {
+    padding-left: 0.5rem !important;
+  }
+
+  .btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+}
+
+.full-table {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  background: #fff;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+
+  th, td {
+    padding: 1rem 1.25rem;
+  }
+
+  th {
+    background-color: #f5f5f5;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  tr {
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  td {
+    vertical-align: middle;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .user-form {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .actions {
+    margin: 1.5rem 0 1rem;
+  }
+}
